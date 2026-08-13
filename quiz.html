@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var cur=localStorage.getItem("patternlab_current_user");if(!cur){window.location.replace("login.html");}}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem("patternlab_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — PatternLab</title>
+  <meta name="description" content="Uji pemahamanmu tentang pengenalan pola citra dan suara melalui quiz interaktif PatternLab." />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="has-sidebar">
+
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-node-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <span class="preloader-text">Menyiapkan laboratorium...</span>
+    </div>
+  </div>
+
+  <!-- ===================== MOBILE TOPBAR ===================== -->
+  <div class="mobile-topbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+      <span class="nav-logo-text">Pattern<span>Lab</span></span>
+    </a>
+    <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ===================== SIDEBAR NAVIGASI ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="nav-logo sidebar-logo">
+        <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="nav-logo-text">Pattern<span>Lab</span></span>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Ciutkan sidebar" title="Ciutkan/lebarkan sidebar">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu" id="navMenu">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+        <li><a href="petakonsep.html"><i class="fa-solid fa-diagram-project"></i><span>Peta Konsep</span></a></li>
+        <li><a href="materi.html"><i class="fa-solid fa-book"></i><span>Materi</span></a></li>
+        <li><a href="video.html"><i class="fa-solid fa-video"></i><span>Video</span></a></li>
+        <li><a href="simulasi.html"><i class="fa-solid fa-robot"></i><span>Simulasi</span></a></li>
+        <li><a href="lkpd.html"><i class="fa-solid fa-file-lines"></i><span>LKPD</span></a></li>
+        <li><a href="quiz.html" class="active"><i class="fa-solid fa-pen-to-square"></i><span>Quiz</span></a></li>
+        <li><a href="glosarium.html"><i class="fa-solid fa-book-bookmark"></i><span>Glosarium</span></a></li>
+        <li><a href="progres.html"><i class="fa-solid fa-chart-line"></i><span>Progres</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="nav-user" id="navUser">
+        <span class="nav-user-badge"><i class="fa-solid fa-user"></i> <span id="navUserLabel"></span></span>
+        <button class="nav-user-switch" id="navUserSwitch" title="Ganti Pengguna"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode tampilan">
+        <i class="fa-solid fa-sun theme-icon-light"></i>
+        <i class="fa-solid fa-moon theme-icon-dark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="breadcrumb"><a href="index.html">Home</a> / Quiz</span>
+        <h1>Quiz Pengenalan Pola AI</h1>
+        <p>Uji seberapa jauh pemahamanmu tentang konsep pengenalan pola citra dan suara.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="quiz-layout">
+        <div class="quiz-card" id="quizCard">
+
+          <!-- STATE 1: Intro -->
+          <div class="quiz-state active" id="quizIntro">
+            <div class="quiz-intro">
+              <div class="quiz-intro-icon"><i class="fa-solid fa-brain"></i></div>
+              <h2>Pengenalan Pola AI</h2>
+              <p>Kuis ini terdiri dari 3 bagian — Pilihan Ganda, Memasangkan, dan Esai Singkat — seputar konsep dasar pengenalan pola citra dan suara.</p>
+
+              <div class="quiz-intro-meta">
+                <div>
+                  <b>5</b>
+                  <span>Pilihan Ganda</span>
+                </div>
+                <div>
+                  <b>5</b>
+                  <span>Memasangkan</span>
+                </div>
+                <div>
+                  <b>3</b>
+                  <span>Esai Singkat</span>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="startQuizBtn">
+                <i class="fa-solid fa-play"></i> Mulai Quiz
+              </button>
+            </div>
+          </div>
+
+          <!-- STATE 2: Pertanyaan -->
+          <div class="quiz-state" id="quizQuestionState">
+            <div class="quiz-progress-row">
+              <span id="quizProgressText">Soal 1 dari 9</span>
+              <span class="quiz-part-label" id="quizPartLabel"><i class="fa-solid fa-layer-group"></i> Bagian 1: Pilihan Ganda</span>
+            </div>
+            <div class="quiz-progress-track">
+              <div class="quiz-progress-fill" id="quizProgressFill" style="width: 0%;"></div>
+            </div>
+
+            <span class="quiz-question-number" id="quizQuestionNumber">Soal 1 / 9</span>
+            <h3 class="quiz-question" id="quizQuestionText">Pertanyaan akan muncul di sini.</h3>
+            <p class="quiz-instruction" id="quizInstruction" style="display: none;"></p>
+
+            <div class="quiz-options" id="quizOptions"></div>
+
+            <div class="quiz-explanation-card" id="quizExplanationCard" style="display: none;">
+              <div class="quiz-explanation-header"><i class="fa-solid fa-circle-info"></i> <span id="quizExplanationTitle">Pembahasan</span></div>
+              <div class="quiz-explanation-status" id="quizExplanationStatus">
+                <span id="quizExplanationStatusText"></span>
+              </div>
+              <p class="quiz-explanation-correct-answer" id="quizExplanationCorrectAnswer" style="display: none;"></p>
+              <span class="quiz-explanation-text-label">Pembahasan</span>
+              <p class="quiz-explanation-text" id="quizExplanationText"></p>
+            </div>
+
+            <div class="quiz-footer-row">
+              <button class="btn btn-outline" id="prevQuizBtn" style="display: none;">
+                <i class="fa-solid fa-arrow-left"></i> Sebelumnya
+              </button>
+              <button class="btn btn-primary" id="quizSubmitBtn" style="display: none;">
+                Periksa Jawaban <i class="fa-solid fa-check"></i>
+              </button>
+              <button class="btn btn-primary" id="nextQuizBtn" style="display: none;">
+                Lanjut <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STATE 3: Hasil -->
+          <div class="quiz-state" id="quizResultState">
+            <div class="quiz-result">
+              <div class="quiz-result-score">
+                <b id="quizScoreValue">0</b>
+                <span>Nilai Kamu</span>
+              </div>
+              <h2>Quiz Selesai!</h2>
+              <p>Berikut ringkasan hasil pengerjaan quiz kamu (Pilihan Ganda + Memasangkan).</p>
+
+              <div class="quiz-category-badge">
+                <span id="quizCategoryEmoji">🏆</span>
+                <span id="quizCategoryLabel">Sangat Baik</span>
+              </div>
+
+              <div class="quiz-result-stats">
+                <div class="quiz-result-stat correct">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <b id="quizCorrectValue">0</b>
+                  <span>Jawaban Benar</span>
+                </div>
+                <div class="quiz-result-stat wrong">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                  <b id="quizWrongValue">0</b>
+                  <span>Jawaban Salah</span>
+                </div>
+                <div class="quiz-result-stat percent">
+                  <i class="fa-solid fa-percent"></i>
+                  <b id="quizPercentValue">0%</b>
+                  <span>Persentase</span>
+                </div>
+                <div class="quiz-result-stat essay">
+                  <i class="fa-solid fa-pen-nib"></i>
+                  <b id="quizEssayValue">0/3</b>
+                  <span>Esai Dijawab</span>
+                </div>
+              </div>
+
+              <div class="quiz-result-actions">
+                <button class="btn btn-outline" id="restartQuizBtn"><i class="fa-solid fa-rotate-left"></i> Ulangi Quiz</button>
+                <button class="btn btn-outline" id="quizToMateriBtn"><i class="fa-solid fa-book"></i> Kembali ke Materi</button>
+                <a href="glosarium.html" class="btn btn-outline"><i class="fa-solid fa-book-bookmark"></i> Lanjut ke Glosarium</a>
+                <a href="progres.html" class="btn btn-primary"><i class="fa-solid fa-chart-line"></i> Lihat Progres</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+            PatternLab
+          </div>
+          <p>Laboratorium virtual untuk belajar pengenalan pola citra dan suara bagi siswa SMA, dibangun sebagai media pembelajaran interaktif berbasis AI.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="petakonsep.html">Peta Konsep</a></li>
+            <li><a href="materi.html">Materi</a></li>
+            <li><a href="video.html">Video Edukasi</a></li>
+            <li><a href="simulasi.html">Simulasi AI</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Lainnya</h5>
+          <ul>
+            <li><a href="glosarium.html">Glosarium</a></li>
+            <li><a href="progres.html">Progres</a></li>
+            <li><a href="lkpd.html">LKPD</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Ikuti Kami</h5>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> PatternLab. Dibuat untuk tugas kelompok sekolah.</span>
+        <a href="lkpd.html">Lembar Kerja Peserta Didik (LKPD)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

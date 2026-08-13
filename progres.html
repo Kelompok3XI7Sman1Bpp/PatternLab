@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var cur=localStorage.getItem("patternlab_current_user");if(!cur){window.location.replace("login.html");}}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem("patternlab_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progres — PatternLab</title>
+  <meta name="description" content="Pantau progress belajar pengenalan pola citra dan suara di PatternLab." />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="has-sidebar">
+
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-node-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <span class="preloader-text">Menyiapkan laboratorium...</span>
+    </div>
+  </div>
+
+  <!-- ===================== MOBILE TOPBAR ===================== -->
+  <div class="mobile-topbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+      <span class="nav-logo-text">Pattern<span>Lab</span></span>
+    </a>
+    <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ===================== SIDEBAR NAVIGASI ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="nav-logo sidebar-logo">
+        <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="nav-logo-text">Pattern<span>Lab</span></span>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Ciutkan sidebar" title="Ciutkan/lebarkan sidebar">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu" id="navMenu">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+        <li><a href="petakonsep.html"><i class="fa-solid fa-diagram-project"></i><span>Peta Konsep</span></a></li>
+        <li><a href="materi.html"><i class="fa-solid fa-book"></i><span>Materi</span></a></li>
+        <li><a href="video.html"><i class="fa-solid fa-video"></i><span>Video</span></a></li>
+        <li><a href="simulasi.html"><i class="fa-solid fa-robot"></i><span>Simulasi</span></a></li>
+        <li><a href="lkpd.html"><i class="fa-solid fa-file-lines"></i><span>LKPD</span></a></li>
+        <li><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i><span>Quiz</span></a></li>
+        <li><a href="glosarium.html"><i class="fa-solid fa-book-bookmark"></i><span>Glosarium</span></a></li>
+        <li><a href="progres.html" class="active"><i class="fa-solid fa-chart-line"></i><span>Progres</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="nav-user" id="navUser">
+        <span class="nav-user-badge"><i class="fa-solid fa-user"></i> <span id="navUserLabel"></span></span>
+        <button class="nav-user-switch" id="navUserSwitch" title="Ganti Pengguna"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode tampilan">
+        <i class="fa-solid fa-sun theme-icon-light"></i>
+        <i class="fa-solid fa-moon theme-icon-dark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main id="progresPage">
+    <section class="page-header">
+      <div class="container">
+        <span class="breadcrumb"><a href="index.html">Home</a> / Progres</span>
+        <h1>Progres Belajar</h1>
+        <p>
+          <span id="progresUserName">Tamu</span> ·
+          <span id="progresUserClass">-</span> —
+          pantau perkembangan belajarmu dalam memahami pengenalan pola citra dan suara.
+        </p>
+      </div>
+    </section>
+
+    <section class="container dashboard-layout">
+
+      <!-- Kartu statistik ringkas -->
+      <div class="dashboard-top-grid">
+        <div class="stat-card reveal">
+          <div class="stat-card-icon" style="background: linear-gradient(135deg,#3654ff,#6b82ff);"><i class="fa-solid fa-chart-simple"></i></div>
+          <div class="stat-card-body">
+            <span>Progress Keseluruhan</span>
+            <b id="progresStatPercent">0%</b>
+            <span class="stat-trend up">Dihitung otomatis dari aktivitasmu</span>
+          </div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-card-icon" style="background: linear-gradient(135deg,#7c3aed,#a78bfa);"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-card-body">
+            <span>Tahap Selesai</span>
+            <b id="progresStatStages">0 / 9</b>
+            <span class="stat-trend up">Tujuan, Peta Konsep, Materi, Video, Simulasi, LKPD, Quiz, Glosarium</span>
+          </div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-card-icon" style="background: linear-gradient(135deg,#0891b2,#22d3ee);"><i class="fa-solid fa-video"></i></div>
+          <div class="stat-card-body">
+            <span>Video Edukasi</span>
+            <b id="progresStatVideo">0 / 2</b>
+            <span class="stat-trend up">Video yang sudah ditonton selesai</span>
+          </div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-card-icon" style="background: linear-gradient(135deg,#3654ff,#7c3aed);"><i class="fa-solid fa-pen-to-square"></i></div>
+          <div class="stat-card-body">
+            <span>Skor Quiz</span>
+            <b id="progresStatQuiz">-</b>
+            <span class="stat-trend up" id="progresStatQuizTrend">Belum dikerjakan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress per tahap & donut chart -->
+      <div class="dashboard-mid-grid">
+        <div class="panel-card reveal">
+          <div class="panel-card-title">
+            <h3>Progress per Tahap</h3>
+            <span>Berdasarkan aktivitas yang benar-benar sudah kamu selesaikan</span>
+          </div>
+
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>🎯 Tujuan Pembelajaran</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="tujuan" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>🧠 Peta Konsep</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="petaKonsep" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>📖 Materi</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="materi" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>🎥 Video 1</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="video1" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>🎥 Video 2</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="video2" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>🤖 Simulasi AI</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="simulasi" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>📄 LKPD</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="lkpd" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>📝 Quiz</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="quiz" data-percent="0"></div></div>
+          </div>
+          <div class="progress-topic-row">
+            <div class="progress-topic-top"><span>📖 Glosarium</span><span data-stage-percent>0%</span></div>
+            <div class="progress-bar-track"><div class="progress-bar-fill" data-stage="glosarium" data-percent="0"></div></div>
+          </div>
+        </div>
+
+        <div class="panel-card reveal reveal-delay-1">
+          <div class="panel-card-title">
+            <h3>Ringkasan Progres</h3>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" id="masteryDonut" data-mastered="0" data-review="0">
+              <div class="donut-hole">
+                <b>0%</b>
+                <span>Selesai</span>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div><span class="legend-dot" style="background:#3654ff;"></span> <span id="progresLegendMastered">Selesai (0%)</span></div>
+              <div><span class="legend-dot" style="background:#e5e9f5;"></span> <span id="progresLegendRemaining">Belum selesai (100%)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tahap selesai & perlu diselesaikan -->
+      <div class="dashboard-bottom-grid">
+        <div class="panel-card reveal">
+          <div class="panel-card-title">
+            <h3>Tahap yang Sudah Selesai</h3>
+          </div>
+          <div class="topic-chip-list" id="progresDoneList">
+            <p style="color: var(--color-text-faint); font-size: 0.86rem;">Belum ada tahap yang selesai.</p>
+          </div>
+        </div>
+        <div class="panel-card reveal reveal-delay-1">
+          <div class="panel-card-title">
+            <h3>Tahap yang Perlu Diselesaikan</h3>
+          </div>
+          <div class="topic-chip-list" id="progresTodoList"></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+            PatternLab
+          </div>
+          <p>Laboratorium virtual untuk belajar pengenalan pola citra dan suara bagi siswa SMA, dibangun sebagai media pembelajaran interaktif berbasis AI.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="petakonsep.html">Peta Konsep</a></li>
+            <li><a href="materi.html">Materi</a></li>
+            <li><a href="video.html">Video Edukasi</a></li>
+            <li><a href="simulasi.html">Simulasi AI</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Lainnya</h5>
+          <ul>
+            <li><a href="glosarium.html">Glosarium</a></li>
+            <li><a href="progres.html">Progres</a></li>
+            <li><a href="lkpd.html">LKPD</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Ikuti Kami</h5>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> PatternLab. Dibuat untuk tugas kelompok sekolah.</span>
+        <a href="lkpd.html">Lembar Kerja Peserta Didik (LKPD)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

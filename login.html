@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var cur=localStorage.getItem("patternlab_current_user");if(cur){window.location.replace("index.html");}}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem("patternlab_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masuk — PatternLab</title>
+  <meta name="description" content="Masuk ke PatternLab, laboratorium virtual AI untuk belajar pengenalan pola citra dan suara." />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-node-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <span class="preloader-text">Menyiapkan laboratorium...</span>
+    </div>
+  </div>
+
+  <main class="login-shell">
+    <div class="login-glow login-glow-1"></div>
+    <div class="login-glow login-glow-2"></div>
+
+    <div class="login-card reveal">
+      <div class="login-brand">
+        <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="nav-logo-text">Pattern<span>Lab</span></span>
+      </div>
+      <span class="eyebrow"><i class="fa-solid fa-microchip"></i> Laboratorium Virtual AI</span>
+      <h1>Selamat Datang di PatternLab</h1>
+      <p>Masukkan data dirimu untuk memulai pembelajaran.</p>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="login-field">
+          <label for="loginName">Nama</label>
+          <input type="text" id="loginName" placeholder="Nama lengkapmu" autocomplete="name" />
+        </div>
+        <div class="login-field">
+          <label for="loginClass">Kelas</label>
+          <input type="text" id="loginClass" placeholder="Contoh: XI-7" autocomplete="off" />
+        </div>
+
+        <p class="login-error" id="loginError" style="display: none;"></p>
+
+        <button type="submit" class="btn btn-primary btn-block">Mulai Belajar <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

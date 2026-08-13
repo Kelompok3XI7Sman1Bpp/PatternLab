@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var cur=localStorage.getItem("patternlab_current_user");if(!cur){window.location.replace("login.html");}}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem("patternlab_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulasi AI — PatternLab</title>
+  <meta name="description" content="Coba simulasi pengenalan pola citra menggunakan AI di PatternLab." />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PWA: mendukung mode offline & instalasi sebagai aplikasi -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#3654ff" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+</head>
+<body class="has-sidebar">
+
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-node-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <span class="preloader-text">Menyiapkan laboratorium...</span>
+    </div>
+  </div>
+
+  <!-- ===================== MOBILE TOPBAR ===================== -->
+  <div class="mobile-topbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+      <span class="nav-logo-text">Pattern<span>Lab</span></span>
+    </a>
+    <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ===================== SIDEBAR NAVIGASI ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="nav-logo sidebar-logo">
+        <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="nav-logo-text">Pattern<span>Lab</span></span>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Ciutkan sidebar" title="Ciutkan/lebarkan sidebar">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu" id="navMenu">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+        <li><a href="petakonsep.html"><i class="fa-solid fa-diagram-project"></i><span>Peta Konsep</span></a></li>
+        <li><a href="materi.html"><i class="fa-solid fa-book"></i><span>Materi</span></a></li>
+        <li><a href="video.html"><i class="fa-solid fa-video"></i><span>Video</span></a></li>
+        <li><a href="simulasi.html" class="active"><i class="fa-solid fa-robot"></i><span>Simulasi</span></a></li>
+        <li><a href="lkpd.html"><i class="fa-solid fa-file-lines"></i><span>LKPD</span></a></li>
+        <li><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i><span>Quiz</span></a></li>
+        <li><a href="glosarium.html"><i class="fa-solid fa-book-bookmark"></i><span>Glosarium</span></a></li>
+        <li><a href="progres.html"><i class="fa-solid fa-chart-line"></i><span>Progres</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="nav-user" id="navUser">
+        <span class="nav-user-badge"><i class="fa-solid fa-user"></i> <span id="navUserLabel"></span></span>
+        <button class="nav-user-switch" id="navUserSwitch" title="Ganti Pengguna"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode tampilan">
+        <i class="fa-solid fa-sun theme-icon-light"></i>
+        <i class="fa-solid fa-moon theme-icon-dark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="breadcrumb"><a href="index.html">Home</a> / Simulasi AI</span>
+        <h1>Simulasi Pengenalan Pola Citra</h1>
+        <p>Unggah gambar atau gunakan kamera, lalu lihat bagaimana model AI PatternLab mengenali pola di dalamnya secara real-time.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="simulasi-layout">
+
+        <!-- Panduan Simulasi (ditampilkan pertama kali sebelum area eksperimen) -->
+        <div class="sim-guide-card reveal" id="simGuideCard">
+          <div class="sim-guide-head">
+            <span class="sim-guide-head-icon">🔬</span>
+            <div>
+              <h2>Panduan Lab Analisis AI</h2>
+              <p>Ikuti langkah berikut untuk memahami bagaimana komputer memproses sebuah gambar.</p>
+            </div>
+          </div>
+
+          <div class="sim-guide-steps">
+            <div class="sim-guide-step">
+              <span class="sim-guide-step-num">01</span>
+              <div class="sim-guide-step-body">
+                <h4>Unggah Gambar</h4>
+                <p>Pilih gambar objek yang ingin dianalisis, misalnya apel, pisang, jeruk, atau objek lainnya.</p>
+              </div>
+            </div>
+            <div class="sim-guide-step">
+              <span class="sim-guide-step-num">02</span>
+              <div class="sim-guide-step-body">
+                <h4>Amati Gambar Asli</h4>
+                <p>Perhatikan bentuk, warna, tekstur, dan bagian-bagian objek pada gambar.</p>
+              </div>
+            </div>
+            <div class="sim-guide-step">
+              <span class="sim-guide-step-num">03</span>
+              <div class="sim-guide-step-body">
+                <h4>Coba Grayscale</h4>
+                <p>Aktifkan grayscale untuk melihat gambar dalam bentuk intensitas terang-gelap.</p>
+              </div>
+            </div>
+            <div class="sim-guide-step">
+              <span class="sim-guide-step-num">04</span>
+              <div class="sim-guide-step-body">
+                <h4>Coba Deteksi Tepi</h4>
+                <p>Aktifkan deteksi tepi untuk melihat batas dan bentuk objek dari perubahan intensitas piksel.</p>
+              </div>
+            </div>
+            <div class="sim-guide-step">
+              <span class="sim-guide-step-num">05</span>
+              <div class="sim-guide-step-body">
+                <h4>Amati Highlight Fitur</h4>
+                <p>Gunakan visualisasi highlight untuk memahami bagian gambar yang menjadi ciri penting dalam pengenalan pola.</p>
+              </div>
+            </div>
+            <div class="sim-guide-step">
+              <span class="sim-guide-step-num">06</span>
+              <div class="sim-guide-step-body">
+                <h4>Analisis Hasil</h4>
+                <p>Bandingkan perubahan gambar pada setiap tahap dan catat pengamatanmu di LKPD.</p>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="simGuideStartBtn">
+            Mulai Simulasi <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Kartu Objek yang Dapat Dikenali (ditampilkan di paling atas) -->
+        <div class="simulasi-support-card simulasi-support-card-top reveal" id="simulasiUploadArea">
+          <div class="card-label"><i class="fa-solid fa-list-check"></i> Objek yang Dapat Dikenali AI</div>
+          <p class="support-object-intro">Sebelum mencoba, kenali dulu lima kelas objek yang sudah dipelajari oleh model AI PatternLab berikut ini.</p>
+          <div class="support-object-grid">
+            <div class="support-object-chip"><span>🍎</span> Apel</div>
+            <div class="support-object-chip"><span>🍌</span> Pisang</div>
+            <div class="support-object-chip"><span>🍊</span> Jeruk</div>
+            <div class="support-object-chip"><span>🍓</span> Stroberi</div>
+            <div class="support-object-chip"><span>🥭</span> Mangga</div>
+          </div>
+          <p class="support-object-note">Model AI PatternLab saat ini hanya dilatih untuk mengenali lima jenis buah tersebut. Apabila gambar selain lima objek di atas diunggah atau diarahkan ke kamera, hasil prediksi mungkin tidak akurat.</p>
+        </div>
+
+        <!-- Kartu Upload -->
+        <div class="simulasi-upload-card reveal">
+          <h2><i class="fa-solid fa-cloud-arrow-up"></i> Upload Gambar</h2>
+          <p>Seret gambar ke area di bawah ini, klik untuk memilih file, atau gunakan kamera perangkatmu secara langsung.</p>
+
+          <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon"><i class="fa-solid fa-camera-retro"></i></div>
+            <h4>Seret & letakkan gambar di sini</h4>
+            <p>Mendukung format JPG, PNG, atau WEBP</p>
+            <div class="dropzone-btn-row">
+              <button type="button" class="btn btn-primary" id="selectImageBtn">
+                <i class="fa-solid fa-folder-open"></i> Pilih Gambar
+              </button>
+              <button type="button" class="btn btn-outline" id="openCameraBtn">
+                <i class="fa-solid fa-camera"></i> Gunakan Kamera
+              </button>
+            </div>
+            <small>Gambar diproses langsung di perangkatmu menggunakan model Teachable Machine.</small>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" hidden />
+
+          <!-- Panel Kamera (tersembunyi secara default) -->
+          <div class="camera-panel" id="cameraPanel">
+            <div class="camera-frame">
+              <video id="webcamVideo" autoplay playsinline muted></video>
+              <span class="camera-live-badge"><span class="status-dot"></span> Live</span>
+            </div>
+            <div class="camera-btn-row">
+              <button type="button" class="btn btn-primary btn-sm" id="captureBtn">
+                <i class="fa-solid fa-camera-retro"></i> Ambil Foto
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" id="closeCameraBtn">
+                <i class="fa-solid fa-xmark"></i> Tutup Kamera
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Mode Simulasi -->
+        <div class="sim-mode-tabs reveal">
+          <button type="button" class="sim-mode-tab active" id="simTabBasic" data-mode="basic">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Prediksi
+          </button>
+          <button type="button" class="sim-mode-tab" id="simTabLab" data-mode="lab">
+            <i class="fa-solid fa-flask"></i> Lab Analisis AI
+          </button>
+        </div>
+
+        <!-- ============ MODE 1: HASIL PREDIKSI (dasar) ============ -->
+        <div class="sim-mode-panel active" id="simBasicPanel">
+          <!-- Grid Preview & Hasil -->
+          <div class="simulasi-result-grid">
+
+            <!-- Preview -->
+            <div class="simulasi-preview-card reveal">
+              <div class="card-label"><i class="fa-solid fa-image"></i> Preview Gambar</div>
+              <div class="preview-frame" id="previewFrame">
+                <div class="preview-placeholder" id="predictionEmpty">
+                  <i class="fa-regular fa-image"></i>
+                  <p>Belum ada gambar yang diunggah</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hasil Prediksi -->
+            <div class="simulasi-result-card reveal reveal-delay-1" id="resultCardWrap">
+              <div class="card-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Hasil Prediksi AI</div>
+
+              <!-- Loading state -->
+              <div class="ai-loading" id="aiLoading" style="display: none;">
+                <span class="ai-loading-spinner"></span>
+                <span>AI sedang menganalisis gambar...</span>
+              </div>
+
+              <!-- Pesan error (bukan alert bawaan browser) -->
+              <div class="sim-error-banner" id="simErrorBanner" style="display: none;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span id="simErrorText">Terjadi kesalahan.</span>
+              </div>
+
+              <div class="prediction-result" id="predictionResult">
+                <div class="prediction-label-row">
+                  <span class="prediction-label" id="predictionLabel">—</span>
+                  <span class="prediction-badge" id="predictionBadge"><i class="fa-solid fa-check"></i> Prediksi Utama</span>
+                </div>
+
+                <div class="confidence-row">
+                  <div class="confidence-row-top">
+                    <span>Tingkat Keyakinan (Confidence)</span>
+                    <b id="confidenceValue">0%</b>
+                  </div>
+                  <div class="confidence-bar-track">
+                    <div class="confidence-bar-fill" id="confidenceFill"></div>
+                  </div>
+                </div>
+
+                <!-- Daftar seluruh confidence per kelas -->
+                <div class="confidence-list" id="confidenceList"></div>
+
+                <div class="prediction-explanation">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span id="predictionExplanation">Penjelasan hasil prediksi akan muncul di sini.</span>
+                </div>
+
+                <div class="simulasi-actions">
+                  <button class="btn btn-outline btn-sm" id="resetSimBtn"><i class="fa-solid fa-rotate-left"></i> Coba Gambar Lain</button>
+                </div>
+              </div>
+
+              <div class="prediction-empty" id="predictionEmptyResult">
+                <i class="fa-solid fa-robot"></i>
+                <p>Unggah gambar atau gunakan kamera untuk melihat hasil prediksi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ MODE 2: LAB ANALISIS AI ============ -->
+        <div class="sim-mode-panel" id="simLabPanel">
+          <div class="sim-lab-intro">
+            <i class="fa-solid fa-flask"></i>
+            <div>
+              <h3>Lab Analisis AI</h3>
+              <p>Bongkar tahapan yang dilalui AI untuk "melihat" gambarmu, lalu uji seberapa tahan model ini ketika gambar diubah — mirip seperti kondisi buram, gelap, atau tertutup sebagian di dunia nyata.</p>
+            </div>
+          </div>
+
+          <div class="sim-lab-empty" id="simLabEmpty">
+            <i class="fa-regular fa-image"></i>
+            <p>Unggah atau ambil foto dulu pada tab "Hasil Prediksi", lalu kembali ke sini untuk membedah cara kerjanya.</p>
+          </div>
+
+          <div class="sim-lab-content" id="simLabContent" style="display: none;">
+
+            <!-- Bagian 1: Pipeline Viewer -->
+            <div class="sim-lab-section">
+              <div class="sim-lab-section-head">
+                <span class="sim-lab-section-num">1</span>
+                <div>
+                  <h4>Bagaimana AI "Melihat" Gambar Ini?</h4>
+                  <span>Tahapan pemrosesan citra sebelum diklasifikasikan</span>
+                </div>
+              </div>
+
+              <div class="sim-pipeline-grid">
+                <div class="sim-pipeline-stage">
+                  <canvas id="pipelineOriginal" width="200" height="200"></canvas>
+                  <span class="sim-pipeline-label">1. Gambar Asli</span>
+                </div>
+                <div class="sim-pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="sim-pipeline-stage">
+                  <canvas id="pipelineGray" width="200" height="200"></canvas>
+                  <span class="sim-pipeline-label">2. Grayscale</span>
+                </div>
+                <div class="sim-pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="sim-pipeline-stage">
+                  <canvas id="pipelineEdge" width="200" height="200"></canvas>
+                  <span class="sim-pipeline-label">3. Deteksi Tepi</span>
+                </div>
+                <div class="sim-pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="sim-pipeline-stage">
+                  <canvas id="pipelineFeature" width="200" height="200"></canvas>
+                  <span class="sim-pipeline-label">4. Highlight Fitur</span>
+                </div>
+              </div>
+
+              <p class="sim-pipeline-note">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>"Highlight Fitur" di atas adalah ilustrasi sederhana area bertekstur/tepi kuat pada gambar — bukan feature map asli dari dalam model AI — untuk membantumu membayangkan bagian mana yang cenderung menonjol bagi AI, sesuai konsep Ekstraksi Fitur pada Materi.</span>
+              </p>
+
+              <button type="button" class="btn btn-outline btn-sm" id="playConvolutionBtn">
+                <i class="fa-solid fa-play"></i> Putar Animasi Konvolusi
+              </button>
+              <div class="sim-convolution-wrap" id="convolutionWrap" style="display: none;">
+                <div class="sim-convolution-canvas-wrap">
+                  <canvas id="convolutionCanvas" width="240" height="240"></canvas>
+                  <div class="sim-kernel-box" id="kernelBox"></div>
+                </div>
+                <p>Kotak kuning menggambarkan <em>filter/kernel</em> 3×3 yang "menyapu" gambar sedikit demi sedikit untuk mendeteksi tepi — inilah gambaran sederhana dari cara kerja CNN yang kamu pelajari pada Materi.</p>
+              </div>
+
+              <div class="sim-pipeline-toggles">
+                <span class="sim-pipeline-toggles-label">Uji prediksi dengan tahapan:</span>
+                <label class="sim-toggle-chip"><input type="checkbox" id="stageGrayscale" /> Grayscale</label>
+                <label class="sim-toggle-chip"><input type="checkbox" id="stageEdge" /> Deteksi Tepi</label>
+                <button type="button" class="btn btn-primary btn-sm" id="testPipelineBtn">
+                  <i class="fa-solid fa-flask-vial"></i> Uji Prediksi dengan Tahapan Ini
+                </button>
+              </div>
+              <div class="sim-lab-result" id="pipelineResult" style="display: none;"></div>
+            </div>
+
+            <!-- Bagian 2: Robustness Lab -->
+            <div class="sim-lab-section">
+              <div class="sim-lab-section-head">
+                <span class="sim-lab-section-num">2</span>
+                <div>
+                  <h4>Uji Ketahanan Model (Robustness Lab)</h4>
+                  <span>Ubah kondisi gambar, lalu lihat apakah AI masih bisa mengenalinya</span>
+                </div>
+              </div>
+
+              <div class="sim-robustness-grid">
+                <div class="sim-robustness-preview">
+                  <canvas id="robustnessCanvas" width="280" height="280"></canvas>
+                </div>
+                <div class="sim-robustness-controls">
+                  <div class="sim-slider-row">
+                    <label for="sliderBlur">Blur <span id="sliderBlurValue">0</span>px</label>
+                    <input type="range" id="sliderBlur" min="0" max="12" value="0" step="1" />
+                  </div>
+                  <div class="sim-slider-row">
+                    <label for="sliderBrightness">Kecerahan <span id="sliderBrightnessValue">0</span></label>
+                    <input type="range" id="sliderBrightness" min="-100" max="100" value="0" step="5" />
+                  </div>
+                  <div class="sim-slider-row">
+                    <label for="sliderNoise">Noise <span id="sliderNoiseValue">0</span>%</label>
+                    <input type="range" id="sliderNoise" min="0" max="100" value="0" step="5" />
+                  </div>
+                  <div class="sim-slider-row">
+                    <label for="sliderRotate">Rotasi <span id="sliderRotateValue">0</span>°</label>
+                    <input type="range" id="sliderRotate" min="0" max="360" value="0" step="5" />
+                  </div>
+                  <div class="sim-slider-row">
+                    <label for="sliderOcclusion">Tutupi Bagian Bawah <span id="sliderOcclusionValue">0</span>%</label>
+                    <input type="range" id="sliderOcclusion" min="0" max="70" value="0" step="5" />
+                  </div>
+
+                  <div class="sim-robustness-actions">
+                    <button type="button" class="btn btn-primary btn-sm" id="testRobustnessBtn">
+                      <i class="fa-solid fa-flask-vial"></i> Uji Prediksi
+                    </button>
+                    <button type="button" class="btn btn-outline btn-sm" id="resetRobustnessBtn">
+                      <i class="fa-solid fa-rotate-left"></i> Reset
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sim-compare-wrap" id="compareWrap" style="display: none;">
+                <div class="sim-compare-bar">
+                  <span>Sebelum Modifikasi</span>
+                  <div class="sim-compare-track"><div class="sim-compare-fill original" id="compareOriginalFill"></div></div>
+                  <b id="compareOriginalValue">0%</b>
+                </div>
+                <div class="sim-compare-bar">
+                  <span>Setelah Modifikasi</span>
+                  <div class="sim-compare-track"><div class="sim-compare-fill modified" id="compareModifiedFill"></div></div>
+                  <b id="compareModifiedValue">0%</b>
+                </div>
+                <p class="sim-challenge-message" id="challengeMessage"></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CTA: lanjutkan hasil percobaan ke LKPD -->
+        <div class="simulasi-lkpd-cta reveal">
+          <div class="simulasi-lkpd-cta-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="simulasi-lkpd-cta-body">
+            <h3>📝 Sudah selesai bereksperimen?</h3>
+            <p>Catat dan analisis hasil percobaanmu di LKPD. Data objek dan tahapan yang baru saja kamu uji akan otomatis tersedia sebagai referensi awal di sana.</p>
+            <ul class="simulasi-lkpd-cta-steps">
+              <li><span>1</span> Coba beberapa gambar buah</li>
+              <li><span>2</span> Amati hasil prediksi & confidence</li>
+              <li><span>3</span> Catat hasilnya</li>
+              <li><span>4</span> Analisis & jawab pertanyaan di LKPD</li>
+            </ul>
+          </div>
+          <a href="lkpd.html" class="btn btn-primary">➡ Lanjut ke LKPD</a>
+        </div>
+
+        <div class="simulasi-note-banner reveal">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Halaman ini sudah terhubung dengan model <strong>Google Teachable Machine</strong> yang telah dilatih. Seluruh proses prediksi — baik dari gambar unggahan maupun kamera — berjalan langsung di perangkatmu (on-device).</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+            PatternLab
+          </div>
+          <p>Laboratorium virtual untuk belajar pengenalan pola citra dan suara bagi siswa SMA, dibangun sebagai media pembelajaran interaktif berbasis AI.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="petakonsep.html">Peta Konsep</a></li>
+            <li><a href="materi.html">Materi</a></li>
+            <li><a href="video.html">Video Edukasi</a></li>
+            <li><a href="simulasi.html">Simulasi AI</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Lainnya</h5>
+          <ul>
+            <li><a href="glosarium.html">Glosarium</a></li>
+            <li><a href="progres.html">Progres</a></li>
+            <li><a href="lkpd.html">LKPD</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Ikuti Kami</h5>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> PatternLab. Dibuat untuk tugas kelompok sekolah.</span>
+        <a href="lkpd.html">Lembar Kerja Peserta Didik (LKPD)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Library resmi Google Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

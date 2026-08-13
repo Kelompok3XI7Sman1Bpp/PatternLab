@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var cur=localStorage.getItem("patternlab_current_user");if(!cur){window.location.replace("login.html");}}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem("patternlab_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PatternLab — Platform Pembelajaran Pengenalan Pola Citra & Suara</title>
+  <meta name="description" content="PatternLab adalah laboratorium virtual untuk belajar pengenalan pola citra dan suara melalui materi, video, simulasi AI, dan quiz interaktif." />
+
+  <!-- Font Awesome (ikon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Stylesheet utama -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="has-sidebar">
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-node-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <span class="preloader-text">Menyiapkan laboratorium...</span>
+    </div>
+  </div>
+
+  <!-- ===================== MOBILE TOPBAR ===================== -->
+  <div class="mobile-topbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+      <span class="nav-logo-text">Pattern<span>Lab</span></span>
+    </a>
+    <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ===================== SIDEBAR NAVIGASI ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="nav-logo sidebar-logo">
+        <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="nav-logo-text">Pattern<span>Lab</span></span>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Ciutkan sidebar" title="Ciutkan/lebarkan sidebar">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu" id="navMenu">
+        <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+        <li><a href="petakonsep.html"><i class="fa-solid fa-diagram-project"></i><span>Peta Konsep</span></a></li>
+        <li><a href="materi.html"><i class="fa-solid fa-book"></i><span>Materi</span></a></li>
+        <li><a href="video.html"><i class="fa-solid fa-video"></i><span>Video</span></a></li>
+        <li><a href="simulasi.html"><i class="fa-solid fa-robot"></i><span>Simulasi</span></a></li>
+        <li><a href="lkpd.html"><i class="fa-solid fa-file-lines"></i><span>LKPD</span></a></li>
+        <li><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i><span>Quiz</span></a></li>
+        <li><a href="glosarium.html"><i class="fa-solid fa-book-bookmark"></i><span>Glosarium</span></a></li>
+        <li><a href="progres.html"><i class="fa-solid fa-chart-line"></i><span>Progres</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="nav-user" id="navUser">
+        <span class="nav-user-badge"><i class="fa-solid fa-user"></i> <span id="navUserLabel"></span></span>
+        <button class="nav-user-switch" id="navUserSwitch" title="Ganti Pengguna"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode tampilan">
+        <i class="fa-solid fa-sun theme-icon-light"></i>
+        <i class="fa-solid fa-moon theme-icon-dark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main>
+    <!-- ===================== HERO SECTION ===================== -->
+    <section class="hero">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow"><i class="fa-solid fa-microchip"></i> Laboratorium Virtual AI</span>
+          <h1 class="hero-title">Pattern<span class="text-gradient">Lab</span></h1>
+          <p class="hero-subtitle">Platform Pembelajaran Interaktif Pengenalan Pola Citra dan Suara — pahami cara komputer "melihat" dan "mendengar" dunia melalui materi, video, simulasi AI, dan quiz.</p>
+
+          <div class="hero-actions">
+            <a href="materi.html" class="btn btn-primary"><i class="fa-solid fa-play"></i> Mulai Belajar</a>
+            <a href="#alur-pembelajaran" class="btn btn-outline" id="panduanBelajarBtn"><i class="fa-solid fa-compass"></i> Panduan Pembelajaran</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <b>7</b>
+              <span>Topik Materi</span>
+            </div>
+            <div class="hero-stat">
+              <b>2</b>
+              <span>Video Edukasi</span>
+            </div>
+            <div class="hero-stat">
+              <b>AI</b>
+              <span>Simulasi Interaktif</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-visual-card">
+            <canvas id="neuralCanvas"></canvas>
+            <div class="hero-visual-label">
+              <span class="status-dot"></span>
+              Neural Network Aktif
+            </div>
+          </div>
+          <div class="hero-float-card">
+            <i class="fa-solid fa-wave-square"></i>
+            <div>
+              <b>Confidence 94%</b>
+              <span>Pola suara dikenali</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TUJUAN PEMBELAJARAN ===================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow"><i class="fa-solid fa-bullseye"></i> Tujuan Kami</span>
+          <h2>🎯 Tujuan Pembelajaran</h2>
+          <p>Lima hal yang ingin dicapai PatternLab lewat rangkaian materi, simulasi, dan latihan interaktifnya.</p>
+        </div>
+
+        <div class="tujuan-list">
+          <div class="tujuan-item reveal">
+            <span class="tujuan-item-number">1</span>
+            <div class="tujuan-item-icon grad-1"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Media Pembelajaran Interaktif</h3>
+            <p>Menyediakan media pembelajaran yang interaktif dan mudah dipahami mengenai pengenalan pola citra dan suara, mulai dari pengertian hingga kuis.</p>
+          </div>
+          <div class="tujuan-item reveal reveal-delay-1">
+            <span class="tujuan-item-number">2</span>
+            <div class="tujuan-item-icon grad-2"><i class="fa-solid fa-lightbulb"></i></div>
+            <h3>Memahami Konsep Dasar</h3>
+            <p>Membantu peserta didik memahami konsep dasar pengenalan pola pada citra dan suara.</p>
+          </div>
+          <div class="tujuan-item reveal reveal-delay-2">
+            <span class="tujuan-item-number">3</span>
+            <div class="tujuan-item-icon grad-3"><i class="fa-solid fa-brain"></i></div>
+            <h3>Cara Kerja AI</h3>
+            <p>Menjelaskan bagaimana komputer mengenali objek dan suara menggunakan proses AI sederhana.</p>
+          </div>
+          <div class="tujuan-item reveal reveal-delay-3">
+            <span class="tujuan-item-number">4</span>
+            <div class="tujuan-item-icon grad-4"><i class="fa-solid fa-flask"></i></div>
+            <h3>Simulasi & Latihan</h3>
+            <p>Meningkatkan pemahaman melalui simulasi, visualisasi, dan latihan interaktif.</p>
+          </div>
+          <div class="tujuan-item reveal">
+            <span class="tujuan-item-number">5</span>
+            <div class="tujuan-item-icon" style="background: var(--gradient-main);"><i class="fa-solid fa-rocket"></i></div>
+            <h3>Menumbuhkan Minat AI</h3>
+            <p>Menumbuhkan minat peserta didik terhadap bidang Artificial Intelligence dan Computer Vision.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ALUR PEMBELAJARAN ===================== -->
+    <section class="section bg-soft dot-grid-bg" id="alur-pembelajaran">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow"><i class="fa-solid fa-route"></i> Panduan Belajar</span>
+          <h2>Alur Pembelajaran</h2>
+          <p>Ikuti tujuh tahap berikut secara berurutan — mulai dari belajar teori sampai membuat karya, agar pengalaman belajarmu terasa utuh dan terstruktur.</p>
+          <p class="flow-tagline">Belajar → Praktik → Meneliti → Berkarya → Menguji → Mengevaluasi</p>
+        </div>
+
+        <div class="flow-grid-rows">
+          <!-- Baris 1: Tahap 01–04 -->
+          <div class="flow-grid-row cols-4">
+            <button type="button" class="flow-card reveal" data-step="1">
+              <span class="flow-step-number">01</span>
+              <div class="flow-icon"><i class="fa-solid fa-book"></i></div>
+              <h4>📖 Belajar Materi</h4>
+              <p>Pahami konsep dasar pengenalan pola</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+            <button type="button" class="flow-card reveal reveal-delay-1" data-step="2">
+              <span class="flow-step-number">02</span>
+              <div class="flow-icon"><i class="fa-solid fa-video"></i></div>
+              <h4>🎥 Menonton Video</h4>
+              <p>Lihat visualisasi konsep secara nyata</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+            <button type="button" class="flow-card reveal reveal-delay-2" data-step="3">
+              <span class="flow-step-number">03</span>
+              <div class="flow-icon"><i class="fa-solid fa-robot"></i></div>
+              <h4>🤖 Mencoba Simulasi AI</h4>
+              <p>Praktikkan langsung dengan AI</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+            <button type="button" class="flow-card reveal reveal-delay-3" data-step="4">
+              <span class="flow-step-number">04</span>
+              <div class="flow-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+              <h4>🔬 Melakukan Penelitian</h4>
+              <p>Amati dan analisis hasil simulasi</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+          </div>
+
+          <!-- Konektor turun dari baris 1 ke baris 2 -->
+          <div class="flow-row-connector" aria-hidden="true">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+
+          <!-- Baris 2: Tahap 05–07 -->
+          <div class="flow-grid-row cols-3">
+            <button type="button" class="flow-card reveal" data-step="5">
+              <span class="flow-step-number">05</span>
+              <div class="flow-icon"><i class="fa-solid fa-file-pen"></i></div>
+              <h4>📝 Membuat LKPD</h4>
+              <p>Susun LKPD berdasarkan hasil penelitian</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+            <button type="button" class="flow-card reveal reveal-delay-1" data-step="6">
+              <span class="flow-step-number">06</span>
+              <div class="flow-icon"><i class="fa-solid fa-square-poll-vertical"></i></div>
+              <h4>✅ Mengerjakan Quiz</h4>
+              <p>Uji sejauh mana pemahamanmu</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+            <button type="button" class="flow-card reveal reveal-delay-2" data-step="7">
+              <span class="flow-step-number">07</span>
+              <div class="flow-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h4>📊 Melihat Progress</h4>
+              <p>Pantau perkembangan belajarmu</p>
+              <span class="flow-card-cta">Lihat Panduan <i class="fa-solid fa-chevron-right"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Penekanan alur Simulasi AI → Penelitian → LKPD -->
+        <div class="flow-highlight-path reveal">
+          <span class="flow-highlight-item"><i class="fa-solid fa-robot"></i> Simulasi AI</span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="flow-highlight-item"><i class="fa-solid fa-eye"></i> Pengamatan</span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="flow-highlight-item"><i class="fa-solid fa-magnifying-glass-chart"></i> Penelitian</span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="flow-highlight-item"><i class="fa-solid fa-diagram-project"></i> Analisis</span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="flow-highlight-item is-final"><i class="fa-solid fa-file-pen"></i> Pembuatan LKPD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Panduan Detail Tahap Pembelajaran -->
+    <div class="flow-modal-overlay" id="flowModalOverlay">
+      <div class="flow-modal">
+        <button type="button" class="flow-modal-close" id="flowModalClose" aria-label="Tutup panduan">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flow-modal-header">
+          <span class="flow-modal-number" id="flowModalNumber">01</span>
+          <div>
+            <span class="flow-modal-eyebrow" id="flowModalEyebrow">Tahap 1</span>
+            <h3 id="flowModalTitle">Belajar Materi</h3>
+          </div>
+        </div>
+        <p class="flow-modal-intro" id="flowModalIntro">—</p>
+
+        <div class="flow-modal-block">
+          <h5><i class="fa-solid fa-list-check"></i> Yang Harus Kamu Lakukan</h5>
+          <ul id="flowModalTodo"></ul>
+        </div>
+
+        <div class="flow-modal-block">
+          <h5><i class="fa-solid fa-compass"></i> Menu yang Dibuka</h5>
+          <p id="flowModalMenu">—</p>
+        </div>
+
+        <div class="flow-modal-block flow-modal-goal">
+          <h5><i class="fa-solid fa-bullseye"></i> Tujuan</h5>
+          <p id="flowModalGoal">—</p>
+        </div>
+
+        <a href="#" class="btn btn-primary btn-block" id="flowModalCta">Buka Menu Ini <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="cta-band reveal">
+        <div class="cta-band-text">
+          <h3>Siap menjelajahi dunia pengenalan pola?</h3>
+          <p>Mulai dari materi dasar, lalu coba simulasi AI dan uji pemahamanmu lewat quiz interaktif.</p>
+        </div>
+        <a href="materi.html" class="btn btn-outline">Mulai Sekarang <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+            PatternLab
+          </div>
+          <p>Laboratorium virtual untuk belajar pengenalan pola citra dan suara bagi siswa SMA, dibangun sebagai media pembelajaran interaktif berbasis AI.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="petakonsep.html">Peta Konsep</a></li>
+            <li><a href="materi.html">Materi</a></li>
+            <li><a href="video.html">Video Edukasi</a></li>
+            <li><a href="simulasi.html">Simulasi AI</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Lainnya</h5>
+          <ul>
+            <li><a href="glosarium.html">Glosarium</a></li>
+            <li><a href="progres.html">Progres</a></li>
+            <li><a href="lkpd.html">LKPD</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Ikuti Kami</h5>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> PatternLab. Dibuat untuk tugas kelompok sekolah.</span>
+        <a href="lkpd.html">Lembar Kerja Peserta Didik (LKPD)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

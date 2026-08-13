@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var cur=localStorage.getItem("patternlab_current_user");if(!cur){window.location.replace("login.html");}}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem("patternlab_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Edukasi — PatternLab</title>
+  <meta name="description" content="Video edukasi pengenalan pola citra dan suara di PatternLab." />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="has-sidebar">
+
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-node-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <span class="preloader-text">Menyiapkan laboratorium...</span>
+    </div>
+  </div>
+
+  <!-- ===================== MOBILE TOPBAR ===================== -->
+  <div class="mobile-topbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+      <span class="nav-logo-text">Pattern<span>Lab</span></span>
+    </a>
+    <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ===================== SIDEBAR NAVIGASI ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="nav-logo sidebar-logo">
+        <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="nav-logo-text">Pattern<span>Lab</span></span>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Ciutkan sidebar" title="Ciutkan/lebarkan sidebar">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu" id="navMenu">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+        <li><a href="petakonsep.html"><i class="fa-solid fa-diagram-project"></i><span>Peta Konsep</span></a></li>
+        <li><a href="materi.html"><i class="fa-solid fa-book"></i><span>Materi</span></a></li>
+        <li><a href="video.html" class="active"><i class="fa-solid fa-video"></i><span>Video</span></a></li>
+        <li><a href="simulasi.html"><i class="fa-solid fa-robot"></i><span>Simulasi</span></a></li>
+        <li><a href="lkpd.html"><i class="fa-solid fa-file-lines"></i><span>LKPD</span></a></li>
+        <li><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i><span>Quiz</span></a></li>
+        <li><a href="glosarium.html"><i class="fa-solid fa-book-bookmark"></i><span>Glosarium</span></a></li>
+        <li><a href="progres.html"><i class="fa-solid fa-chart-line"></i><span>Progres</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="nav-user" id="navUser">
+        <span class="nav-user-badge"><i class="fa-solid fa-user"></i> <span id="navUserLabel"></span></span>
+        <button class="nav-user-switch" id="navUserSwitch" title="Ganti Pengguna"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode tampilan">
+        <i class="fa-solid fa-sun theme-icon-light"></i>
+        <i class="fa-solid fa-moon theme-icon-dark"></i>
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="breadcrumb"><a href="index.html">Home</a> / Video Edukasi</span>
+        <h1>Video Edukasi</h1>
+        <p>Saksikan visualisasi konsep pengenalan pola citra dan suara agar lebih mudah dipahami.</p>
+      </div>
+    </section>
+
+    <!-- ===================== VIDEO EDUKASI ===================== -->
+    <section class="container">
+      <div class="video-grid">
+
+        <!-- Video 1: Pola Citra -->
+        <article class="video-card reveal" data-video-key="video1">
+          <div class="video-thumb">
+            <video class="video-native" controls preload="metadata" poster="">
+              <source src="Pola Citra.mp4" type="video/mp4" />
+              Browser kamu tidak mendukung pemutaran video HTML5.
+            </video>
+          </div>
+          <div class="video-body">
+            <span class="video-category"><i class="fa-solid fa-eye"></i> Computer Vision</span>
+            <h3>Video Pengenalan Pola Citra <span class="video-status-badge" id="videoStatus-video1"></span></h3>
+            <p>Menjelaskan bagaimana komputer mengenali objek pada gambar menggunakan konsep Computer Vision dan Artificial Intelligence.</p>
+            <div class="video-meta">
+              <span><i class="fa-regular fa-clock"></i> 8 menit 16 detik</span>
+              <span><i class="fa-solid fa-microchip"></i> Computer Vision</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video 2: Pola Suara -->
+        <article class="video-card reveal reveal-delay-1" data-video-key="video2">
+          <div class="video-thumb">
+            <video class="video-native" controls preload="metadata" poster="">
+              <source src="Pola Suara.mp4" type="video/mp4" />
+              Browser kamu tidak mendukung pemutaran video HTML5.
+            </video>
+          </div>
+          <div class="video-body">
+            <span class="video-category"><i class="fa-solid fa-microphone"></i> Speech Recognition</span>
+            <h3>Video Pengenalan Pola Suara <span class="video-status-badge" id="videoStatus-video2"></span></h3>
+            <p>Menjelaskan bagaimana AI mengenali ucapan dan suara menggunakan proses Speech Recognition.</p>
+            <div class="video-meta">
+              <span><i class="fa-regular fa-clock"></i> 7 menit 36 detik</span>
+              <span><i class="fa-solid fa-microchip"></i> Speech Recognition</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+ <!-- ===================== PENERAPAN AI DI DUNIA NYATA (ZIG-ZAG) ===================== -->
+<section class="section bg-soft dot-grid-bg">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="eyebrow">
+        <i class="fa-solid fa-globe"></i> Studi Kasus Nyata
+      </span>
+
+      <h2>Penerapan AI di Dunia Nyata</h2>
+
+      <p>
+        Lihat bagaimana teknologi pengenalan pola citra dan suara diterapkan
+        pada berbagai bidang di kehidupan sehari-hari.
+      </p>
+    </div>
+
+    <div class="applied-list">
+
+      <!-- =========================================================
+           CARD 1 — SELF DRIVING CAR
+      ========================================================== -->
+      <article class="applied-card reveal">
+
+        <span class="applied-step-num">01</span>
+
+        <div class="applied-media">
+          <div class="applied-video-frame" data-observe-video>
+
+            <span class="applied-live-badge">
+              <span class="status-dot"></span> Video Edukasi
+            </span>
+
+            <video
+              class="applied-video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="Self Driving Car.mp4" type="video/mp4" />
+            </video>
+
+          </div>
+        </div>
+
+        <div class="applied-content">
+
+          <span class="video-category">
+            <i class="fa-solid fa-eye"></i> Computer Vision
+          </span>
+
+          <h3>🚗 Self-Driving Car</h3>
+
+          <p>
+            Self-driving car atau mobil otonom merupakan kendaraan yang
+            menggunakan kombinasi kamera, sensor, komputer, dan kecerdasan
+            buatan (AI) untuk memahami kondisi lingkungan di sekitarnya.
+            Teknologi ini memungkinkan kendaraan mengenali berbagai objek
+            dan pola di jalan sehingga dapat membantu menentukan tindakan
+            yang sesuai tanpa harus selalu dikendalikan oleh manusia.
+          </p>
+
+          <p>
+            Kamera pada kendaraan dapat menangkap gambar lingkungan seperti
+            jalan, marka jalan, lampu lalu lintas, rambu, kendaraan lain,
+            sepeda, dan pejalan kaki. Selain kamera, kendaraan otonom juga
+            dapat menggunakan berbagai sensor untuk memperoleh informasi
+            mengenai jarak dan posisi objek di sekitarnya.
+          </p>
+
+          <p>
+            AI kemudian memproses informasi tersebut dan melakukan
+            pengenalan pola. Misalnya, sistem dapat mengenali pola tertentu
+            sebagai rambu berhenti, membedakan marka jalan dengan bagian
+            lain dari jalan, atau mengidentifikasi keberadaan kendaraan dan
+            pejalan kaki. Berdasarkan informasi yang diperoleh, sistem dapat
+            membantu menentukan tindakan seperti memperlambat kendaraan,
+            berhenti, mengikuti jalur, atau menjaga jarak dari objek di depan.
+          </p>
+
+          <div class="applied-keywords">
+            <span class="applied-keyword">Computer Vision</span>
+            <span class="applied-keyword">Sensor Fusion</span>
+            <span class="applied-keyword">Autonomous Vehicle</span>
+          </div>
+
+          <div class="applied-workflow">
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-camera"></i> Input
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-diagram-project"></i> Analisis Pola
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-shapes"></i> Klasifikasi
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-car"></i> Output
+            </span>
+
+          </div>
+
+          <div class="applied-relation-box">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+              <strong>Hubungannya dengan Pengenalan Pola</strong>
+
+              <p>
+                AI mengenali pola visual dari lingkungan sekitar dan
+                mengklasifikasikannya menjadi objek atau kondisi tertentu
+                yang dapat digunakan untuk membantu pengambilan keputusan.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- =========================================================
+           CARD 2 — FACE RECOGNITION
+      ========================================================== -->
+      <article class="applied-card reveal">
+
+        <span class="applied-step-num">02</span>
+
+        <div class="applied-media">
+          <div class="applied-video-frame" data-observe-video>
+
+            <span class="applied-live-badge">
+              <span class="status-dot"></span> Video Edukasi
+            </span>
+
+            <video
+              class="applied-video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="Face Recognition.mp4" type="video/mp4" />
+            </video>
+
+          </div>
+        </div>
+
+        <div class="applied-content">
+
+          <span class="video-category">
+            <i class="fa-solid fa-eye"></i> Computer Vision
+          </span>
+
+          <h3>👤 Face Recognition</h3>
+
+          <p>
+            Face Recognition atau pengenalan wajah merupakan teknologi yang
+            memungkinkan komputer mengenali atau mencocokkan wajah seseorang
+            berdasarkan karakteristik visual tertentu. Teknologi ini banyak
+            digunakan dalam kehidupan sehari-hari, misalnya untuk membuka
+            smartphone, sistem absensi, verifikasi identitas, dan sistem
+            keamanan.
+          </p>
+
+          <p>
+            Ketika kamera menangkap wajah seseorang, sistem akan mendeteksi
+            bagian wajah terlebih dahulu. Setelah itu, sistem dapat
+            menganalisis berbagai karakteristik atau pola pada wajah,
+            seperti posisi mata, bentuk wajah, jarak antarbagian wajah,
+            serta karakteristik visual lainnya. Informasi tersebut kemudian
+            diolah menjadi representasi yang dapat dibandingkan dengan data
+            wajah yang telah tersimpan dalam sistem.
+          </p>
+
+          <p>
+            Contohnya, ketika pengguna menggunakan fitur Face Unlock pada
+            smartphone, kamera akan menangkap wajah pengguna dan sistem akan
+            menganalisisnya, lalu membandingkannya dengan data wajah yang
+            sebelumnya telah didaftarkan.
+          </p>
+
+          <div class="applied-keywords">
+            <span class="applied-keyword">Face Detection</span>
+            <span class="applied-keyword">Feature Matching</span>
+            <span class="applied-keyword">Biometrik</span>
+          </div>
+
+          <div class="applied-workflow">
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-camera"></i> Input
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-diagram-project"></i> Analisis Pola
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-shapes"></i> Klasifikasi
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-unlock"></i> Output
+            </span>
+
+          </div>
+
+          <div class="applied-relation-box">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+              <strong>Hubungannya dengan Pengenalan Pola</strong>
+
+              <p>
+                Sistem mencari dan membandingkan pola atau karakteristik
+                tertentu pada wajah untuk menentukan apakah wajah yang
+                terdeteksi memiliki kecocokan dengan data yang telah dikenal.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- =========================================================
+           CARD 3 — GOOGLE LENS
+      ========================================================== -->
+      <article class="applied-card reveal">
+
+        <span class="applied-step-num">03</span>
+
+        <div class="applied-media">
+          <div class="applied-video-frame" data-observe-video>
+
+            <span class="applied-live-badge">
+              <span class="status-dot"></span> Video Edukasi
+            </span>
+
+            <video
+              class="applied-video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="Google Lens.mp4" type="video/mp4" />
+            </video>
+
+          </div>
+        </div>
+
+        <div class="applied-content">
+
+          <span class="video-category">
+            <i class="fa-solid fa-eye"></i> Computer Vision
+          </span>
+
+          <h3>🔍 Google Lens</h3>
+
+          <p>
+            Google Lens merupakan teknologi berbasis pengenalan visual yang
+            memungkinkan perangkat mengenali dan memahami berbagai objek
+            atau informasi melalui kamera. Teknologi ini dapat membantu
+            pengguna mengenali objek, tumbuhan, hewan, teks, produk,
+            bangunan, dan berbagai elemen visual lainnya.
+          </p>
+
+          <p>
+            Ketika pengguna mengarahkan kamera ke suatu objek, sistem akan
+            menangkap gambar dan menganalisis pola visual yang terdapat
+            di dalamnya. AI kemudian menggunakan informasi tersebut untuk
+            memperkirakan apa yang terdapat pada gambar. Misalnya, ketika
+            kamera diarahkan ke sebuah tanaman, sistem dapat menganalisis
+            karakteristik visualnya dan memberikan informasi mengenai
+            kemungkinan jenis tanaman tersebut.
+          </p>
+
+          <p>
+            Ketika kamera diarahkan ke sebuah tulisan, teknologi pengenalan
+            pola juga dapat digunakan untuk mengenali karakter dan
+            mengubahnya menjadi teks yang dapat dibaca atau diproses oleh
+            komputer.
+          </p>
+
+          <div class="applied-keywords">
+            <span class="applied-keyword">Object Recognition</span>
+            <span class="applied-keyword">OCR</span>
+            <span class="applied-keyword">Visual Search</span>
+          </div>
+
+          <div class="applied-workflow">
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-camera"></i> Input
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-diagram-project"></i> Analisis Pola
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-shapes"></i> Klasifikasi
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-circle-info"></i> Output
+            </span>
+
+          </div>
+
+          <div class="applied-relation-box">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+              <strong>Hubungannya dengan Pengenalan Pola</strong>
+
+              <p>
+                AI menganalisis pola visual dalam sebuah gambar kemudian
+                mencocokkannya dengan pola yang telah dipelajari untuk
+                mengenali objek atau informasi yang terdapat di dalam gambar.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- =========================================================
+           CARD 4 — SMART HOME VOICE ASSISTANT
+      ========================================================== -->
+      <article class="applied-card reveal">
+
+        <span class="applied-step-num">04</span>
+
+        <div class="applied-media">
+          <div class="applied-video-frame" data-observe-video>
+
+            <span class="applied-live-badge">
+              <span class="status-dot"></span> Video Edukasi
+            </span>
+
+            <video
+              class="applied-video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="Smart Home.mp4" type="video/mp4" />
+            </video>
+
+          </div>
+        </div>
+
+        <div class="applied-content">
+
+          <span class="video-category">
+            <i class="fa-solid fa-microphone"></i> Speech Recognition
+          </span>
+
+          <h3>🏠 Smart Home Voice Assistant</h3>
+
+          <p>
+            Smart Home Voice Assistant merupakan teknologi yang memungkinkan
+            pengguna mengendalikan berbagai perangkat rumah pintar menggunakan
+            perintah suara. Contohnya adalah memberikan perintah untuk
+            menyalakan atau mematikan lampu, mengatur AC, mengontrol televisi,
+            atau menjalankan perangkat tertentu.
+          </p>
+
+          <p>
+            Berbeda dengan contoh sebelumnya yang terutama menggunakan
+            pengenalan pola citra, teknologi ini memanfaatkan pengenalan pola
+            suara dan ucapan. Ketika pengguna berbicara, mikrofon akan
+            menangkap gelombang suara. Sistem kemudian memproses suara tersebut
+            dan menganalisis pola yang terdapat di dalamnya, lalu mengenali
+            karakteristik suara dan mengubah ucapan menjadi informasi atau
+            perintah yang dapat dipahami sistem.
+          </p>
+
+          <p>
+            Teknologi ini menunjukkan bahwa pengenalan pola tidak hanya
+            digunakan untuk gambar, tetapi juga dapat diterapkan pada suara
+            dan bahasa manusia.
+          </p>
+
+          <div class="applied-keywords">
+            <span class="applied-keyword">Speech Recognition</span>
+            <span class="applied-keyword">Natural Language</span>
+            <span class="applied-keyword">IoT</span>
+          </div>
+
+          <div class="applied-workflow">
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-microphone"></i> Input
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-diagram-project"></i> Analisis Pola
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-shapes"></i> Klasifikasi
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-lightbulb"></i> Output
+            </span>
+
+          </div>
+
+          <div class="applied-relation-box">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+              <strong>Hubungannya dengan Pengenalan Pola</strong>
+
+              <p>
+                AI mengenali pola pada suara dan ucapan manusia untuk memahami
+                perintah, kemudian menghubungkannya dengan tindakan yang harus
+                dilakukan oleh perangkat.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- =========================================================
+           CARD 5 — AI MEDICAL IMAGING
+      ========================================================== -->
+      <article class="applied-card reveal">
+
+        <span class="applied-step-num">05</span>
+
+        <div class="applied-media">
+          <div class="applied-video-frame" data-observe-video>
+
+            <span class="applied-live-badge">
+              <span class="status-dot"></span> Video Edukasi
+            </span>
+
+            <video
+              class="applied-video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="AI Medical Imaging.mp4" type="video/mp4" />
+            </video>
+
+          </div>
+        </div>
+
+        <div class="applied-content">
+
+          <span class="video-category">
+            <i class="fa-solid fa-eye"></i> Computer Vision
+          </span>
+
+          <h3>🏥 AI Medical Imaging</h3>
+
+          <p>
+            AI Medical Imaging merupakan penerapan kecerdasan buatan dalam
+            membantu menganalisis citra medis, seperti X-Ray, CT Scan, dan MRI.
+            Teknologi ini dapat membantu tenaga medis menemukan pola tertentu
+            pada citra yang mungkin berkaitan dengan kondisi atau kelainan
+            tertentu.
+          </p>
+
+          <p>
+            Dalam prosesnya, AI mempelajari berbagai contoh citra medis yang
+            telah tersedia. Dari data tersebut, sistem dapat belajar mengenali
+            karakteristik atau pola tertentu pada gambar. Ketika diberikan
+            citra baru, AI dapat menganalisis bagian-bagian gambar dan
+            memberikan hasil berdasarkan pola yang telah dipelajarinya —
+            misalnya menandai area pada citra X-Ray yang memiliki karakteristik
+            tertentu agar mendapat perhatian lebih dari tenaga medis.
+          </p>
+
+          <p>
+            Namun, hasil dari AI bukan pengganti diagnosis tenaga medis.
+            Teknologi ini lebih tepat dipandang sebagai alat bantu yang dapat
+            mendukung proses analisis dan membantu tenaga medis dalam mengambil
+            keputusan berdasarkan informasi yang tersedia.
+          </p>
+
+          <div class="applied-keywords">
+            <span class="applied-keyword">Medical Imaging</span>
+            <span class="applied-keyword">Deep Learning</span>
+            <span class="applied-keyword">Decision Support</span>
+          </div>
+
+          <div class="applied-workflow">
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-x-ray"></i> Input
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-diagram-project"></i> Analisis Pola
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-shapes"></i> Klasifikasi
+            </span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <span class="applied-workflow-item">
+              <i class="fa-solid fa-notes-medical"></i> Output
+            </span>
+
+          </div>
+
+          <div class="applied-relation-box">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <div>
+              <strong>Hubungannya dengan Pengenalan Pola</strong>
+
+              <p>
+                AI menganalisis pola dan karakteristik pada citra medis untuk
+                membantu menemukan area atau kondisi yang perlu diperhatikan
+                oleh tenaga medis.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="nav-logo-icon"><i class="fa-solid fa-diagram-project"></i></span>
+            PatternLab
+          </div>
+          <p>Laboratorium virtual untuk belajar pengenalan pola citra dan suara bagi siswa SMA, dibangun sebagai media pembelajaran interaktif berbasis AI.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="petakonsep.html">Peta Konsep</a></li>
+            <li><a href="materi.html">Materi</a></li>
+            <li><a href="video.html">Video Edukasi</a></li>
+            <li><a href="simulasi.html">Simulasi AI</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Lainnya</h5>
+          <ul>
+            <li><a href="glosarium.html">Glosarium</a></li>
+            <li><a href="progres.html">Progres</a></li>
+            <li><a href="lkpd.html">LKPD</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Ikuti Kami</h5>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> PatternLab. Dibuat untuk tugas kelompok sekolah.</span>
+        <a href="lkpd.html">Lembar Kerja Peserta Didik (LKPD)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
